@@ -7,12 +7,12 @@ import cv2 as cv
 
 cap = cv.VideoCapture(1)
 
-fourcc = cv.VideoWriter_fourcc(*"MJPG")
-FPS = 20.0
-WIDTH = 640
-HEIGHT = 480
+fourcc = cv.VideoWriter_fourcc(*'XVID')
+FPS = 10.0
+WIDTH = 1920
+HEIGHT = 1080
 
-out = cv.VideoWriter("output.mp4", fourcc, FPS, (WIDTH, HEIGHT))
+out = cv.VideoWriter("files/output.avi", fourcc, FPS, (WIDTH, HEIGHT), isColor=True)
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -21,6 +21,7 @@ while cap.isOpened():
         break
     
     out.write(frame)
+    
     
     cv.imshow("frame", frame)
     if cv.waitKey(1) == ord("q"):
